@@ -6,11 +6,11 @@
 
 <% if @communities.size > 0 %>
 
-    <% @communitites.each do |community| %>
+    <% @communities.each do |community| %>
 
         <div class="card">
             <h3><%= link_to community.name, community %></h3>
-            <p><%= simple_format community.bio %></p>
+            <p><%= simple_format community.rules %></p>
         </div>
     <%end%>
 
