@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'home/index'
   devise_for :accounts
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :communities
 
   root to: "home#index"
 end
