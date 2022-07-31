@@ -2,7 +2,7 @@
 
 <div class="card">
     <p><strong><%= link_to post.community.name%> </strong>
-        Posted by <%= link_to post.account.username or post.account.full_name, profile_path(post.account.username) %> 
+        Posted by <%= link_to post.account.username, profile_path(post.account.username) %> 
         <%= time_ago_in_words post.created_at%> ago. </p>
     <h4>
         <% link_to post.title, community_post_path(post.community_id, post) %>
