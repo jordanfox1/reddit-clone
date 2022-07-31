@@ -56,13 +56,13 @@ ActiveRecord::Schema.define(version: 2022_07_31_102434) do
     t.index ["community_id"], name: "index_posts_on_community_id"
   end
 
-  create_table "subscribers", force: :cascade do |t|
+  create_table "subscriptions", force: :cascade do |t|
     t.bigint "accounts_id"
     t.bigint "community_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["accounts_id"], name: "index_subscribers_on_accounts_id"
-    t.index ["community_id"], name: "index_subscribers_on_community_id"
+    t.index ["accounts_id"], name: "index_subscriptions_on_accounts_id"
+    t.index ["community_id"], name: "index_subscriptions_on_community_id"
   end
 
 end
