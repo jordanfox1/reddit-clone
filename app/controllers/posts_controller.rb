@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     before_action :authenticate_account!, except: [ :index, :show ]
     before_action :set_post, only: [:show]
+    before_action :auth_subscriber, only: [:new]
 
     def index
         @post = Post.all
@@ -37,6 +38,12 @@ class PostsController < ApplicationController
 
     def post_values
         params.require(:post).permit(:title, :body)
+    end
+
+    def auth_subscriber
+        unless Subscription.where(community_id: params[:community_id], account_id: current_account.id).any?
+            redirect_to root_path, flash: {danger: "Please log in to view this page"}
+        end
     end
 
 end

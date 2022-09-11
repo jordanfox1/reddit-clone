@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_11_022243) do
+ActiveRecord::Schema.define(version: 2022_09_11_070151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 2022_09_11_022243) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "post_id"
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_comments_on_account_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "communities", force: :cascade do |t|
@@ -58,11 +68,11 @@ ActiveRecord::Schema.define(version: 2022_09_11_022243) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.bigint "accounts_id"
+    t.bigint "account_id"
     t.bigint "community_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["accounts_id"], name: "index_subscriptions_on_accounts_id"
+    t.index ["account_id"], name: "index_subscriptions_on_account_id"
     t.index ["community_id"], name: "index_subscriptions_on_community_id"
   end
 

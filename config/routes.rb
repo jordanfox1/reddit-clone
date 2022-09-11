@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  resources :subscriptions
+
   root to: "home#index"
 end
