@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
             format.js {
                 if @comment.save
                     @comments = Comment.where(post_id: @comment.post_id)
-                    render "messages/create"
+                    render "comments/create"
                 else
                     # couldnt save
                 end
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-        params.require(:commment).permit(:message, :post_id)
+        params.require(:comment).permit(:message, :post_id)
         
     end
 end
